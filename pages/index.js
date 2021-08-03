@@ -13,7 +13,7 @@ import { db } from '../firebase'
 import firebase from 'firebase'
 import { useCollectionOnce, useCollection } from 'react-firebase-hooks/firestore';
 import DocumentRow from '../components/DocumentRow'
-
+// ######
 
 export default function Home() {
 
@@ -25,10 +25,10 @@ export default function Home() {
   //                   .doc(session.user.email)
   //                   .collection('docs')
   //                   .orderBy('timestamp', 'desc'))
-  const [snapshot] = useCollection(db.collection('userDocs')
-                    .doc(session.user.email)
-                    .collection('docs')
-                    .orderBy('timestamp', 'desc'))
+  const [snapshot] = useCollection(db?.collection('userDocs')
+                    ?.doc(session?.user?.email)
+                    ?.collection('docs')
+                    ?.orderBy('timestamp', 'desc'))
 
   const createDocument = () => {
     if (!input) return;
