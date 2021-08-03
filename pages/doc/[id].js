@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Login from "../../components/Login"
 import TextEditor from "../../components/TextEditor"
 import { db } from '../../firebase'
@@ -23,6 +24,11 @@ const Doc = () => {
     }
 
     return (
+        <>
+        <Head>
+            <title>Google File - {snapshot?.data()?.fileName}</title>
+            <link rel="icon" href="/Google_Docs_Logo.png" />
+        </Head>
         <div>
             <header className="flex justify-between items-center p-2 pb-1 max-w-6xl mx-auto">
                 <span onClick={() => router.push('/')} className="cursor-pointer">
@@ -59,6 +65,7 @@ const Doc = () => {
             </header>
             <TextEditor />
         </div>
+        </>
     )
 }
 

@@ -11,7 +11,7 @@ import ModalFooter from "@material-tailwind/react/ModalFooter"
 import {useState} from 'react'
 import { db } from '../firebase'
 import firebase from 'firebase'
-import { useCollectionOnce } from 'react-firebase-hooks/firestore';
+import { useCollectionOnce, useCollection } from 'react-firebase-hooks/firestore';
 import DocumentRow from '../components/DocumentRow'
 
 
@@ -21,7 +21,11 @@ export default function Home() {
   // console.log("new session: ", session);
   const [showModal, setShowModal] = useState(false)
   const [input, setInput] = useState('')
-  const [snapshot] = useCollectionOnce(db.collection('userDocs')
+  // const [snapshot] = useCollectionOnce(db.collection('userDocs')
+  //                   .doc(session.user.email)
+  //                   .collection('docs')
+  //                   .orderBy('timestamp', 'desc'))
+  const [snapshot] = useCollection(db.collection('userDocs')
                     .doc(session.user.email)
                     .collection('docs')
                     .orderBy('timestamp', 'desc'))
@@ -81,7 +85,7 @@ export default function Home() {
       <div className="">
       <Head>
         <title>Google Docs Demo</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/Google_Docs_Logo.png" />
       </Head>
       <Header />
       {modal}
@@ -95,7 +99,7 @@ export default function Home() {
               iconOnly={true}
               rounded={true}
               ripple="dark"
-              className="border-0"
+              className="border-0 border-opacity-0"
             >
               <Icon name="more_vert" size="3xl" />
             </Button>
@@ -113,7 +117,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="bg-white px-10 md:px-0">
+      <section className="bg-white px-3 md:px-0">
         <div className=" py-8 text-sm text-gray-700">
           <div className="flex items-center justify-between px-4 max-w-4xl mx-auto">
             <h2 className="font-medium flex-grow">My Documents</h2>

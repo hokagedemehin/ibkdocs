@@ -13,10 +13,10 @@ const DocumentRow = (props) => {
             <Icon name="article" size="3xl" color="blue" />
             <p className="flex-grow pl-3 w-10 pr-10 truncate">{fileName}</p>
             <p className="pr-5 text-sm">
-                {date.toDate().toLocaleDateString()}
+                {date?.toDate().toLocaleDateString()}
             </p>
             <Button 
-            className="border-0"
+            className="border-0 border-opacity-0"
             buttonType="outline"
             rounded={true}
             iconOnly={true}
